@@ -1,0 +1,5 @@
+# openstack needs version <1.11
+# once they update requirement, we can push >=1.11 versions
+# openstack kilo/stable reqs: https://github.com/openstack/requirements/blob/stable/kilo/global-requirements.txt
+# check https://github.com/openstack/requirements/commit/89f9592f1876df303bfc872d773293a1c38ab148
+watchurl=https://pypi.python.org/simple/urllib3/ ../../packages/source/u/urllib3/urllib3-(1.10.[\d.]*).tar.gz.*

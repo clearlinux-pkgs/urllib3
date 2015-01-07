@@ -1,0 +1,17 @@
+backports.ssl_match_hostname
+certifi-python
+cffi-python
+cryptography-python
+mock-python
+ndg_httpsclient-python
+nose-python
+pbr
+pip
+pyasn1-python
+pycparser-python
+pyOpenSSL-python
+python3-dev
+python-dev
+setuptools
+six-python
+tornado-python
