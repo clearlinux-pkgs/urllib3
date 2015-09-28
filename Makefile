@@ -1,4 +1,5 @@
 PKG_NAME := urllib3
-URL := https://pypi.python.org/packages/source/u/urllib3/urllib3-1.10.4.tar.gz
+URL := http://pypi.debian.net/urllib3/urllib3-1.12.tar.gz
+ARCHIVES :=
 
 include ../common/Makefile.common
