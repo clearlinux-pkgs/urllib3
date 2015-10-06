@@ -4,7 +4,7 @@
 #
 Name     : urllib3
 Version  : 1.12
-Release  : 20
+Release  : 21
 URL      : http://pypi.debian.net/urllib3/urllib3-1.12.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.12.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
