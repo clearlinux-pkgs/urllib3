@@ -4,14 +4,13 @@
 #
 Name     : urllib3
 Version  : 1.16
-Release  : 27
+Release  : 28
 URL      : http://pypi.debian.net/urllib3/urllib3-1.16.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.16.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
 Group    : Development/Tools
 License  : MIT
 Requires: urllib3-python
-BuildRequires : backports-abc-python
 BuildRequires : backports.ssl_match_hostname
 BuildRequires : certifi-python
 BuildRequires : cffi-python
