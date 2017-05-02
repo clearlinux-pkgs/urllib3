@@ -6,7 +6,7 @@
 #
 Name     : urllib3
 Version  : 1.21
-Release  : 37
+Release  : 38
 URL      : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz.asc
