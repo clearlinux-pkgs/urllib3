@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x70FE17F8A643E15B (lukasa@keybase.io)
 #
 Name     : urllib3
-Version  : 1.21
-Release  : 38
-URL      : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz
-Source0  : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz
-Source99 : http://pypi.debian.net/urllib3/urllib3-1.21.tar.gz.asc
+Version  : 1.21.1
+Release  : 39
+URL      : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
+Source0  : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
+Source99 : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz.asc
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
 Group    : Development/Tools
 License  : MIT
@@ -55,14 +55,14 @@ python components for the urllib3 package.
 
 
 %prep
-%setup -q -n urllib3-1.21
+%setup -q -n urllib3-1.21.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493208149
+export SOURCE_DATE_EPOCH=1493997546
 python2 setup.py build -b py2
 
 %check
