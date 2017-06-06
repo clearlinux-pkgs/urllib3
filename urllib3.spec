@@ -6,7 +6,7 @@
 #
 Name     : urllib3
 Version  : 1.21.1
-Release  : 40
+Release  : 41
 URL      : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz.asc
@@ -62,8 +62,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496788851
+export SOURCE_DATE_EPOCH=1496788960
 python2 setup.py build -b py2
+python3 setup.py build -b py3
 
 %check
 export http_proxy=http://127.0.0.1:9/
@@ -71,8 +72,13 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
+export SOURCE_DATE_EPOCH=1496788960
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot}
+python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
+python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+echo ----[ mark ]----
+cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
+echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
@@ -80,3 +86,4 @@ python2 -tt setup.py build -b py2 install --root=%{buildroot}
 %files python
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+/usr/lib/python3*/*
