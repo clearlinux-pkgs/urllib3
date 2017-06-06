@@ -6,7 +6,7 @@
 #
 Name     : urllib3
 Version  : 1.21.1
-Release  : 39
+Release  : 40
 URL      : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.21.1.tar.gz.asc
@@ -62,7 +62,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493997546
+export SOURCE_DATE_EPOCH=1496788851
 python2 setup.py build -b py2
 
 %check
