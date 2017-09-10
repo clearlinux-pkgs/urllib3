@@ -6,13 +6,14 @@
 #
 Name     : urllib3
 Version  : 1.22
-Release  : 43
+Release  : 44
 URL      : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz.asc
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
 Group    : Development/Tools
 License  : MIT
+Requires: urllib3-legacypython
 Requires: urllib3-python
 Requires: Sphinx
 Requires: alabaster
@@ -23,29 +24,38 @@ Requires: ipaddress
 Requires: pyOpenSSL
 Requires: requests
 BuildRequires : backports.ssl_match_hostname
-BuildRequires : certifi-python
-BuildRequires : cffi-python
-BuildRequires : cryptography-python
-BuildRequires : mock-python
-BuildRequires : ndg_httpsclient-python
-BuildRequires : nose-python
+BuildRequires : certifi
+BuildRequires : cffi
+BuildRequires : cryptography
+BuildRequires : mock
+BuildRequires : ndg_httpsclient
+BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : pyOpenSSL-python
-BuildRequires : pyasn1-python
-BuildRequires : pycparser-python
+BuildRequires : pyOpenSSL
+BuildRequires : pyasn1
+BuildRequires : pycparser
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : six-python
-BuildRequires : tornado-python
+BuildRequires : six
+BuildRequires : tornado
 
 %description
 =======
 
+%package legacypython
+Summary: legacypython components for the urllib3 package.
+Group: Default
+
+%description legacypython
+legacypython components for the urllib3 package.
+
+
 %package python
 Summary: python components for the urllib3 package.
 Group: Default
+Requires: urllib3-legacypython
 
 %description python
 python components for the urllib3 package.
@@ -59,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1501183202
+export SOURCE_DATE_EPOCH=1505008352
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -69,7 +79,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1501183202
+export SOURCE_DATE_EPOCH=1505008352
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -80,7 +90,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
