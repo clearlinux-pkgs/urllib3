@@ -6,7 +6,7 @@
 #
 Name     : urllib3
 Version  : 1.22
-Release  : 45
+Release  : 46
 URL      : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz.asc
@@ -14,8 +14,8 @@ Summary  : HTTP library with thread-safe connection pooling, file post, and more
 Group    : Development/Tools
 License  : MIT
 Requires: urllib3-legacypython
+Requires: urllib3-python3
 Requires: urllib3-python
-Requires: Sphinx
 Requires: alabaster
 Requires: certifi
 Requires: cryptography
@@ -56,9 +56,18 @@ legacypython components for the urllib3 package.
 Summary: python components for the urllib3 package.
 Group: Default
 Requires: urllib3-legacypython
+Requires: urllib3-python3
 
 %description python
 python components for the urllib3 package.
+
+
+%package python3
+Summary: python3 components for the urllib3 package.
+Group: Default
+
+%description python3
+python3 components for the urllib3 package.
 
 
 %prep
@@ -69,7 +78,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1505072831
+export SOURCE_DATE_EPOCH=1506868865
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -79,7 +88,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1505072831
+export SOURCE_DATE_EPOCH=1506868865
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -95,5 +104,8 @@ echo ----[ mark ]----
 /usr/lib/python2*/*
 
 %files python
+%defattr(-,root,root,-)
+
+%files python3
 %defattr(-,root,root,-)
 /usr/lib/python3*/*
