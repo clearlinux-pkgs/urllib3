@@ -6,14 +6,13 @@
 #
 Name     : urllib3
 Version  : 1.22
-Release  : 52
+Release  : 53
 URL      : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz.asc
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
 Group    : Development/Tools
 License  : MIT
-Requires: urllib3-legacypython
 Requires: urllib3-python3
 Requires: urllib3-python
 Requires: alabaster
@@ -23,6 +22,7 @@ Requires: idna
 Requires: ipaddress
 Requires: pyOpenSSL
 Requires: requests
+BuildRequires : attrs-python
 BuildRequires : backports.ssl_match_hostname
 BuildRequires : certifi
 BuildRequires : cffi
@@ -32,10 +32,14 @@ BuildRequires : ndg_httpsclient
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy-python
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
+BuildRequires : pytest-python
 BuildRequires : python-dev
+BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : setuptools
 BuildRequires : six
@@ -56,7 +60,6 @@ legacypython components for the urllib3 package.
 %package python
 Summary: python components for the urllib3 package.
 Group: Default
-Requires: urllib3-legacypython
 Requires: urllib3-python3
 
 %description python
@@ -80,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1507180260
+export SOURCE_DATE_EPOCH=1519339444
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -90,7 +93,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1507180260
+export SOURCE_DATE_EPOCH=1519339444
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
