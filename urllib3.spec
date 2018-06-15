@@ -38,7 +38,7 @@ BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
 BuildRequires : pytest-python
-BuildRequires : python-dev
+
 BuildRequires : python-mock-python
 BuildRequires : python3-dev
 BuildRequires : setuptools
