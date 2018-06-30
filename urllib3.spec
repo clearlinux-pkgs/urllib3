@@ -6,7 +6,7 @@
 #
 Name     : urllib3
 Version  : 1.22
-Release  : 58
+Release  : 59
 URL      : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source0  : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz
 Source99 : http://pypi.debian.net/urllib3/urllib3-1.22.tar.gz.asc
@@ -14,6 +14,7 @@ Summary  : HTTP library with thread-safe connection pooling, file post, and more
 Group    : Development/Tools
 License  : MIT
 Requires: urllib3-python3
+Requires: urllib3-license
 Requires: urllib3-python
 Requires: alabaster
 Requires: certifi
@@ -22,7 +23,6 @@ Requires: idna
 Requires: ipaddress
 Requires: pyOpenSSL
 Requires: requests
-BuildRequires : attrs-python
 BuildRequires : backports.ssl_match_hostname
 BuildRequires : certifi
 BuildRequires : cffi
@@ -32,16 +32,13 @@ BuildRequires : ndg_httpsclient
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : pluggy-python
-BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
-BuildRequires : pytest-python
-
-BuildRequires : python-mock-python
+BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
+BuildRequires : setuptools-legacypython
 BuildRequires : six
 BuildRequires : tornado
 
@@ -55,6 +52,14 @@ Requires: python-core
 
 %description legacypython
 legacypython components for the urllib3 package.
+
+
+%package license
+Summary: license components for the urllib3 package.
+Group: Default
+
+%description license
+license components for the urllib3 package.
 
 
 %package python
@@ -83,7 +88,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1519339444
+export SOURCE_DATE_EPOCH=1530321046
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -93,8 +98,10 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.6/site-packages python3 setup.py test || :
 %install
-export SOURCE_DATE_EPOCH=1519339444
+export SOURCE_DATE_EPOCH=1530321046
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/urllib3
+cp LICENSE.txt %{buildroot}/usr/share/doc/urllib3/LICENSE.txt
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
 echo ----[ mark ]----
@@ -107,6 +114,10 @@ echo ----[ mark ]----
 %files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/urllib3/LICENSE.txt
 
 %files python
 %defattr(-,root,root,-)
