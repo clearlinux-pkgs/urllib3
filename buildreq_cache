@@ -1,2 +1,8 @@
 1.24.1
+atomicwrites-python
+attrs-python
+more-itertools-python
+pluggy-python
+py-python
+pytest-python
 python-mock
