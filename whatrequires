@@ -1,2 +1,5 @@
 # This file contains recursive sources that require this package
+botocore
+conda
 dulwich
+oslo.vmware
