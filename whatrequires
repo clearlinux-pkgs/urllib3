@@ -1,5 +1,10 @@
 # This file contains recursive sources that require this package
 botocore
 conda
+docker-compose
 dulwich
+koji
+mercurial
 oslo.vmware
+requests
+tempest
