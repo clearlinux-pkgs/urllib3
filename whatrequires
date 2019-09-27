@@ -3,6 +3,7 @@ botocore
 conda
 docker-compose
 dulwich
+gabbi
 koji
 mercurial
 oslo.vmware
