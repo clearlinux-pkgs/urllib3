@@ -4,7 +4,7 @@
 #
 Name     : urllib3
 Version  : 1.25.6
-Release  : 82
+Release  : 83
 URL      : https://files.pythonhosted.org/packages/ff/44/29655168da441dff66de03952880c6e2d17b252836ff1aa4421fba556424/urllib3-1.25.6.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ff/44/29655168da441dff66de03952880c6e2d17b252836ff1aa4421fba556424/urllib3-1.25.6.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
@@ -21,6 +21,8 @@ Requires: idna
 Requires: ipaddress
 Requires: pyOpenSSL
 BuildRequires : PySocks
+BuildRequires : atomicwrites-python
+BuildRequires : attrs-python
 BuildRequires : backports.ssl_match_hostname
 BuildRequires : brotlipy
 BuildRequires : buildreq-distutils3
@@ -30,30 +32,26 @@ BuildRequires : cryptography
 BuildRequires : idna
 BuildRequires : ipaddress
 BuildRequires : mock
+BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy-python
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
 BuildRequires : pytest
 BuildRequires : pytest-python
-BuildRequires : python-dev
 BuildRequires : python-mock
 BuildRequires : python-mock-python
-BuildRequires : python3-dev
 BuildRequires : setuptools
-BuildRequires : setuptools-legacypython
 BuildRequires : six
 BuildRequires : tornado
 
 %description
-urllib3
 =======
-.. image:: https://travis-ci.org/urllib3/urllib3.svg?branch=master
-:alt: Build status on Travis
-:target: https://travis-ci.org/urllib3/urllib3
 
 %package license
 Summary: license components for the urllib3 package.
@@ -89,8 +87,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569617109
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1571158276
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,7 +108,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/urllib3
-cp LICENSE.txt %{buildroot}/usr/share/package-licenses/urllib3/LICENSE.txt
+cp %{_builddir}/urllib3-1.25.6/LICENSE.txt %{buildroot}/usr/share/package-licenses/urllib3/a9d3f17b9e2494f5933ad68688e1c4691b86ba48
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -122,7 +119,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/urllib3/LICENSE.txt
+/usr/share/package-licenses/urllib3/a9d3f17b9e2494f5933ad68688e1c4691b86ba48
 
 %files python
 %defattr(-,root,root,-)

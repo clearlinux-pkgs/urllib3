@@ -2,9 +2,9 @@
 botocore
 conda
 docker-compose
+docker-py
 dulwich
 gabbi
-koji
 mercurial
 oslo.vmware
 requests
