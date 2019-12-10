@@ -4,7 +4,7 @@
 #
 Name     : urllib3
 Version  : 1.25.7
-Release  : 86
+Release  : 87
 URL      : https://files.pythonhosted.org/packages/ad/fc/54d62fa4fc6e675678f9519e677dfc29b8964278d75333cf142892caf015/urllib3-1.25.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ad/fc/54d62fa4fc6e675678f9519e677dfc29b8964278d75333cf142892caf015/urllib3-1.25.7.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
@@ -21,6 +21,8 @@ Requires: idna
 Requires: ipaddress
 Requires: pyOpenSSL
 BuildRequires : PySocks
+BuildRequires : atomicwrites-python
+BuildRequires : attrs-python
 BuildRequires : backports.ssl_match_hostname
 BuildRequires : brotlipy
 BuildRequires : buildreq-distutils3
@@ -30,10 +32,13 @@ BuildRequires : cryptography
 BuildRequires : idna
 BuildRequires : ipaddress
 BuildRequires : mock
+BuildRequires : more-itertools-python
 BuildRequires : ndg_httpsclient
 BuildRequires : nose
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pluggy-python
+BuildRequires : py-python
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
@@ -46,12 +51,11 @@ BuildRequires : six
 BuildRequires : tornado
 
 %description
-urllib3
 =======
-urllib3 is a powerful, *sanity-friendly* HTTP client for Python. Much of the
-Python ecosystem already uses urllib3 and you should too.
-urllib3 brings many critical features that are missing from the Python
-standard libraries:
+        
+        urllib3 is a powerful, *sanity-friendly* HTTP client for Python. Much of the
+        Python ecosystem already uses urllib3 and you should too.
+        urllib3 brings many critical features that are missing from the Python
 
 %package license
 Summary: license components for the urllib3 package.
@@ -81,14 +85,14 @@ python3 components for the urllib3 package.
 
 %prep
 %setup -q -n urllib3-1.25.7
+cd %{_builddir}/urllib3-1.25.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573507552
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576017425
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,7 +108,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
