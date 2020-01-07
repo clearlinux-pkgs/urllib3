@@ -4,7 +4,7 @@
 #
 Name     : urllib3
 Version  : 1.25.7
-Release  : 87
+Release  : 88
 URL      : https://files.pythonhosted.org/packages/ad/fc/54d62fa4fc6e675678f9519e677dfc29b8964278d75333cf142892caf015/urllib3-1.25.7.tar.gz
 Source0  : https://files.pythonhosted.org/packages/ad/fc/54d62fa4fc6e675678f9519e677dfc29b8964278d75333cf142892caf015/urllib3-1.25.7.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
