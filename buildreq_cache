@@ -1,10 +1,10 @@
-1.25.7
-atomicwrites-python
+1.25.8
 attrs-python
 more-itertools-python
+packaging-python
 pluggy-python
 py-python
-pytest
+pyparsing-python
 pytest-python
-python-mock
 python-mock-python
+wcwidth-python

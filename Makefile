@@ -1,5 +1,5 @@
 PKG_NAME := urllib3
-URL = https://files.pythonhosted.org/packages/ad/fc/54d62fa4fc6e675678f9519e677dfc29b8964278d75333cf142892caf015/urllib3-1.25.7.tar.gz
+URL = https://files.pythonhosted.org/packages/09/06/3bc5b100fe7e878d3dee8f807a4febff1a40c213d2783e3246edde1f3419/urllib3-1.25.8.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
