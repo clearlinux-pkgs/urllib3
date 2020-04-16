@@ -9,4 +9,5 @@ gabbi
 mercurial
 oslo.vmware
 requests
+selenium
 tempest
