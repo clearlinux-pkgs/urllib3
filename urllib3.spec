@@ -4,7 +4,7 @@
 #
 Name     : urllib3
 Version  : 1.25.9
-Release  : 91
+Release  : 92
 URL      : https://files.pythonhosted.org/packages/05/8c/40cd6949373e23081b3ea20d5594ae523e681b6f472e600fbc95ed046a36/urllib3-1.25.9.tar.gz
 Source0  : https://files.pythonhosted.org/packages/05/8c/40cd6949373e23081b3ea20d5594ae523e681b6f472e600fbc95ed046a36/urllib3-1.25.9.tar.gz
 Summary  : HTTP library with thread-safe connection pooling, file post, and more.
@@ -18,7 +18,6 @@ Requires: brotlipy
 Requires: certifi
 Requires: cryptography
 Requires: idna
-Requires: ipaddress
 Requires: pyOpenSSL
 BuildRequires : PySocks
 BuildRequires : backports.ssl_match_hostname
@@ -28,7 +27,6 @@ BuildRequires : certifi
 BuildRequires : cffi
 BuildRequires : cryptography
 BuildRequires : idna
-BuildRequires : ipaddress
 BuildRequires : mock
 BuildRequires : ndg_httpsclient
 BuildRequires : nose
@@ -37,18 +35,16 @@ BuildRequires : pip
 BuildRequires : pyOpenSSL
 BuildRequires : pyasn1
 BuildRequires : pycparser
-BuildRequires : pytest
 BuildRequires : setuptools
 BuildRequires : six
 BuildRequires : tornado
 
 %description
-urllib3
 =======
-urllib3 is a powerful, *sanity-friendly* HTTP client for Python. Much of the
-Python ecosystem already uses urllib3 and you should too.
-urllib3 brings many critical features that are missing from the Python
-standard libraries:
+        
+        urllib3 is a powerful, *sanity-friendly* HTTP client for Python. Much of the
+        Python ecosystem already uses urllib3 and you should too.
+        urllib3 brings many critical features that are missing from the Python
 
 %package license
 Summary: license components for the urllib3 package.
@@ -86,24 +82,18 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587069029
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1588358664
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost,127.0.0.1,0.0.0.0
-pytest || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
