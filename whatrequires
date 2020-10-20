@@ -5,10 +5,7 @@ botocore
 conda
 docker-compose
 docker-py
-dulwich
-gabbi
 mercurial
-oslo.vmware
 requests
+responses
 selenium
-tempest
