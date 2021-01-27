@@ -5,7 +5,9 @@ botocore
 conda
 docker-compose
 docker-py
+lutris
 mercurial
 requests
+requests-unixsocket
 responses
 selenium
