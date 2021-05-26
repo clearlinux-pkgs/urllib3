@@ -7,7 +7,9 @@ docker-compose
 docker-py
 lutris
 mercurial
+pywbem
 requests
 requests-unixsocket
 responses
 selenium
+vpp
