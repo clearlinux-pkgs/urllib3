@@ -4,7 +4,6 @@ cffi
 cryptography
 mock
 ndg_httpsclient
-nose
 pbr
 pip
 pyasn1
